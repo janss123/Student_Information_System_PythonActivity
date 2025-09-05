@@ -1,16 +1,13 @@
 import csv
 
-# ===== Global student data dictionary =====
-# Structure: { student_id: {"name": str, "age": int, "grades": list} }
 students = {}
 
 # ===== Helper Functions =====
 
-def add_student(student_id, name, age, *grades):  # variable-length argument for grades
-    # Tuple for fixed data
+def add_student(student_id, name, age, *grades):  
+
     student_tuple = (student_id, name)
     
-    # Convert grades to list
     grades_list = list(grades)
     
     # Store in dictionary
@@ -33,7 +30,7 @@ def display_students(from_file=False):
         print("\n")
 
 
-def update_student(student_id, **kwargs):  # keyword arguments for flexible updates
+def update_student(student_id, **kwargs):
     if student_id in students:
         for key, value in kwargs.items():
             if key in students[student_id]:
@@ -72,19 +69,17 @@ def load_from_file(filename="students.csv"):
     except FileNotFoundError:
         print("File not found.")
 
-# ===== Demonstrations =====
 
-# Lambda for quick average grade calculation
 average = lambda grades: sum(grades)/len(grades) if grades else 0
 
-# Pass by reference vs value demo
+
 def modify_list(grades):
-    grades.append(100)  # modifies original (pass by reference)
+    grades.append(100)  
     return grades
 
 # ===== Main Menu =====
 def main():
-    load_from_file()  # Load data at program start
+    load_from_file() 
     
     while True:
         print("\n===== Student Information System =====")
@@ -132,12 +127,13 @@ def main():
 
         elif choice == "7":
             print("Exiting program.")
-            break  # demonstration of break
+            break 
 
         else:
             print("Invalid choice, try again.")
-            continue  # demonstration of continue
+            continue 
 
 
 if __name__ == "__main__":
     main()
+
